@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="7/4/2025 7:17:12 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{6E2C2162-90BF-47D1-9582-7C43C014A4E6}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{ED50EA12-EE8E-46E6-9949-0029B6A6DF3B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -44,13 +44,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Tarea Flujo de datos"
+      DTS:refId="Package\InsertData"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarea Flujo de datos"
       DTS:DTSID="{946E90D9-729A-4B99-809C-7459F8C121E5}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Tarea Flujo de datos"
+      DTS:ObjectName="InsertData"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -58,15 +58,15 @@
           version="1">
           <components>
             <component
-              refId="Package\Tarea Flujo de datos\Columna derivada 1"
+              refId="Package\InsertData\Columna derivada"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
               description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
-              name="Columna derivada 1"
+              name="Columna derivada"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Tarea Flujo de datos\Columna derivada 1.Inputs[Entrada de columna derivada]"
+                  refId="Package\InsertData\Columna derivada.Inputs[Entrada de columna derivada]"
                   description="Entrada en la transformación Columna derivada"
                   name="Entrada de columna derivada">
                   <externalMetadataColumns />
@@ -74,18 +74,92 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de columna derivada]"
+                  refId="Package\InsertData\Columna derivada.Outputs[Salida de columna derivada]"
                   description="Salida predeterminada de la transformación Columna derivada"
                   exclusionGroup="1"
                   name="Salida de columna derivada"
-                  synchronousInputId="Package\Tarea Flujo de datos\Columna derivada 1.Inputs[Entrada de columna derivada]">
+                  synchronousInputId="Package\InsertData\Columna derivada.Inputs[Entrada de columna derivada]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]"
+                      refId="Package\InsertData\Columna derivada.Outputs[Salida de columna derivada].Columns[EndDate]"
+                      dataType="dbTimeStamp"
+                      description="EndDate"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\InsertData\Columna derivada.Outputs[Salida de columna derivada].Columns[EndDate]"
+                      name="EndDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Columna derivada.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\InsertData\Columna derivada.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InsertData\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InsertData\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InsertData\Columna derivada 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Columna derivada 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\InsertData\Columna derivada 1.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InsertData\Columna derivada 1.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\InsertData\Columna derivada 1.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InsertData\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Cálculo"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]"
+                      lineageId="Package\InsertData\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]"
                       name="LineageKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -106,23 +180,23 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de error de columna derivada]"
+                  refId="Package\InsertData\Columna derivada 1.Outputs[Salida de error de columna derivada]"
                   description="Salida de error de la transformación Columna derivada"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de columna derivada"
-                  synchronousInputId="Package\Tarea Flujo de datos\Columna derivada 1.Inputs[Entrada de columna derivada]">
+                  synchronousInputId="Package\InsertData\Columna derivada 1.Inputs[Entrada de columna derivada]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      refId="Package\InsertData\Columna derivada 1.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      lineageId="Package\InsertData\Columna derivada 1.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      refId="Package\InsertData\Columna derivada 1.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      lineageId="Package\InsertData\Columna derivada 1.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -131,11 +205,883 @@
               </outputs>
             </component>
             <component
-              refId="Package\Tarea Flujo de datos\Destino de OLE DB"
+              refId="Package\InsertData\Columna derivada 2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Columna derivada 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\InsertData\Columna derivada 2.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InsertData\Columna derivada 2.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\InsertData\Columna derivada 2.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InsertData\Columna derivada 2.Outputs[Salida de columna derivada].Columns[StartDate]"
+                      dataType="date"
+                      description="StartDate"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\InsertData\Columna derivada 2.Outputs[Salida de columna derivada].Columns[StartDate]"
+                      name="StartDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Columna derivada 2.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\InsertData\Columna derivada 2.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InsertData\Columna derivada 2.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Columna derivada 2.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InsertData\Columna derivada 2.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Columna derivada 2.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InsertData\Comando de OLE DB"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Comando de OLE DB"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [Fact].[Stock Holding] SET [EndDate] = ? WHERE [Stock Item Key] = ? AND [EndDate] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InsertData\Comando de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[StockItemID]"
+                      cachedDataType="i4"
+                      cachedName="StockItemID"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].Columns[EndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EndDate"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\InsertData\Columna derivada.Outputs[Salida de columna derivada].Columns[EndDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InsertData\Comando de OLE DB.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InsertData\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InsertData\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Comando de OLE DB.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InsertData\Comando de OLE DB 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Comando de OLE DB 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [Fact].[Stock Holding] SET [Bin Location] = ?,[Last Cost Price] = ?,[Last Stocktake Quantity] = ?,[Lineage Key] = ?,[Quantity On Hand] = ?,[Reorder Level] = ?,[Target Stock Level] = ? WHERE [Stock Item Key] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InsertData\Comando de OLE DB 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[BinLocation]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="BinLocation"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[LastCostPrice]"
+                      cachedDataType="numeric"
+                      cachedName="LastCostPrice"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastCostPrice]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[LastStocktakeQuantity]"
+                      cachedDataType="i4"
+                      cachedName="LastStocktakeQuantity"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[LineageKey]"
+                      cachedDataType="i4"
+                      cachedName="LineageKey"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\InsertData\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[QuantityOnHand]"
+                      cachedDataType="i4"
+                      cachedName="QuantityOnHand"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[ReorderLevel]"
+                      cachedDataType="i4"
+                      cachedName="ReorderLevel"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[StockItemID]"
+                      cachedDataType="i4"
+                      cachedName="StockItemID"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_7]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].Columns[TargetStockLevel]"
+                      cachedDataType="i4"
+                      cachedName="TargetStockLevel"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="20"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="18"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_7]"
+                      dataType="i4"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InsertData\Comando de OLE DB 1.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InsertData\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Comando de OLE DB 1.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InsertData\Comando de OLE DB 2"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Comando de OLE DB 2"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [Fact].[Stock Holding] SET [Bin Location] = ?,[Last Stocktake Quantity] = ?,[Lineage Key] = ?,[Quantity On Hand] = ?,[Reorder Level] = ?,[Target Stock Level] = ? WHERE [Stock Item Key] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InsertData\Comando de OLE DB 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].Columns[BinLocation]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="BinLocation"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].Columns[LastStocktakeQuantity]"
+                      cachedDataType="i4"
+                      cachedName="LastStocktakeQuantity"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].Columns[LineageKey]"
+                      cachedDataType="i4"
+                      cachedName="LineageKey"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\InsertData\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].Columns[QuantityOnHand]"
+                      cachedDataType="i4"
+                      cachedName="QuantityOnHand"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].Columns[ReorderLevel]"
+                      cachedDataType="i4"
+                      cachedName="ReorderLevel"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].Columns[StockItemID]"
+                      cachedDataType="i4"
+                      cachedName="StockItemID"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]" />
+                    <inputColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].Columns[TargetStockLevel]"
+                      cachedDataType="i4"
+                      cachedName="TargetStockLevel"
+                      externalMetadataColumnId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="20"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InsertData\Comando de OLE DB 2.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Comando de OLE DB 2.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Comando de OLE DB 2.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\InsertData\Comando de OLE DB 2.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Comando de OLE DB 2.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InsertData\Dimensión de variación lenta"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Dimensión de variación lenta;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;3"
+              description="Actualiza una dimensión del almacenamiento de datos de SQL Server Analysis Services. Actualiza los registros de dimensión existentes e inserta los registros de dimensión que faltan. Por ejemplo, se actualiza la tabla DimProduct de la base de datos OLAP AdventureWorksDW con datos procedentes de la tabla Products de la base de datos OLTP AdventureWorks."
+              name="Dimensión de variación lenta"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SELECT utilizada para crear un conjunto de filas de esquema."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Bin Location], [Last Cost Price], [Last Stocktake Quantity], [Lineage Key], [Quantity On Hand], [Reorder Level], [Stock Item Key], [Target Stock Level],[StartDate],[EndDate] FROM [Fact].[Stock Holding]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la cláusula WHERE de la instrucción SELECT que selecciona la fila actual de entre filas con claves empresariales idénticas."
+                  name="CurrentRowWhere">[StartDate] IS NOT NULL AND [EndDate] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las actualizaciones de atributos históricos se dirigen a la salida de transformación para actualizaciones de atributos variables."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se produce un error de transformación cuando las columnas con atributos fijos contienen cambios."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre de columna para el miembro deducido."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se detectan las actualizaciones de miembros deducidos."
+                  name="EnableInferredMember">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se produce un error de transformación cuando se produce un error de búsqueda de un registro existente."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica que todas las filas de la entrada sean nuevas o que la transformación detecte el tipo de cambio."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\InsertData\Dimensión de variación lenta.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
+                  description="Define la conexión que se debe usar para búsquedas en la tabla de dimensiones"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]"
+                  name="Entrada de dimensión de variación lenta">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[BinLocation]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="BinLocation"
+                      externalMetadataColumnId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Bin Location]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[LastCostPrice]"
+                      cachedDataType="numeric"
+                      cachedName="LastCostPrice"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Last Cost Price]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastCostPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[LastStocktakeQuantity]"
+                      cachedDataType="i4"
+                      cachedName="LastStocktakeQuantity"
+                      externalMetadataColumnId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Last Stocktake Quantity]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[LineageKey]"
+                      cachedDataType="i4"
+                      cachedName="LineageKey"
+                      externalMetadataColumnId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Lineage Key]"
+                      lineageId="Package\InsertData\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[QuantityOnHand]"
+                      cachedDataType="i4"
+                      cachedName="QuantityOnHand"
+                      externalMetadataColumnId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Quantity On Hand]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[ReorderLevel]"
+                      cachedDataType="i4"
+                      cachedName="ReorderLevel"
+                      externalMetadataColumnId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Reorder Level]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[StockItemID]"
+                      cachedDataType="i4"
+                      cachedName="StockItemID"
+                      externalMetadataColumnId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Stock Item Key]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].Columns[TargetStockLevel]"
+                      cachedDataType="i4"
+                      cachedName="TargetStockLevel"
+                      externalMetadataColumnId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Target Stock Level]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Bin Location]"
+                      dataType="wstr"
+                      length="20"
+                      name="Bin Location" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Last Cost Price]"
+                      dataType="numeric"
+                      name="Last Cost Price"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Last Stocktake Quantity]"
+                      dataType="i4"
+                      name="Last Stocktake Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Lineage Key]"
+                      dataType="i4"
+                      name="Lineage Key" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Quantity On Hand]"
+                      dataType="i4"
+                      name="Quantity On Hand" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Reorder Level]"
+                      dataType="i4"
+                      name="Reorder Level" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Stock Item Key]"
+                      dataType="i4"
+                      name="Stock Item Key" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[Target Stock Level]"
+                      dataType="i4"
+                      name="Target Stock Level" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[StartDate]"
+                      dataType="dbTimeStamp"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta].ExternalColumns[EndDate]"
+                      dataType="dbTimeStamp"
+                      name="EndDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InsertData\Dimensión de variación lenta.Outputs[Salida sin cambios]"
+                  description="Filas sin cambios"
+                  exclusionGroup="1"
+                  name="Salida sin cambios"
+                  synchronousInputId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Dimensión de variación lenta.Outputs[Nueva salida]"
+                  description="Nuevas filas"
+                  exclusionGroup="1"
+                  name="Nueva salida"
+                  synchronousInputId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Dimensión de variación lenta.Outputs[Salida de atributo fijo]"
+                  description="Filas con cambios en columnas etiquetadas FixedAttribute"
+                  exclusionGroup="1"
+                  name="Salida de atributo fijo"
+                  synchronousInputId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Dimensión de variación lenta.Outputs[Salida de actualizaciones de atributos variables]"
+                  description="Estas filas contienen información nueva para cambios de columnas ChangingAttribute (tipo 1)"
+                  exclusionGroup="1"
+                  name="Salida de actualizaciones de atributos variables"
+                  synchronousInputId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Dimensión de variación lenta.Outputs[Salida de inserciones de atributos históricos]"
+                  description="Los cambios de HistoricalAttribute (tipo 2) crean estas nuevas filas"
+                  exclusionGroup="2"
+                  name="Salida de inserciones de atributos históricos"
+                  synchronousInputId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\InsertData\Dimensión de variación lenta.Outputs[Salida de actualizaciones de miembros deducidos]"
+                  description="Información para actualizar fila de dimensión inicial sin rellenar"
+                  exclusionGroup="1"
+                  name="Salida de actualizaciones de miembros deducidos"
+                  synchronousInputId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InsertData\Insertar destino"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
               description="Destino de OLE DB"
-              name="Destino de OLE DB"
+              name="Insertar destino"
               usesDispositions="true"
               version="4">
               <properties>
@@ -188,7 +1134,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarea Flujo de datos\Destino de OLE DB.Connections[OleDbConnection]"
+                  refId="Package\InsertData\Insertar destino.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -196,126 +1142,140 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB]"
                   errorOrTruncationOperation="Insertar"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ReorderLevel]"
-                      cachedDataType="i4"
-                      cachedName="ReorderLevel"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Reorder Level]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]" />
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[StartDate]"
+                      cachedDataType="date"
+                      cachedName="StartDate"
+                      externalMetadataColumnId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[StartDate]"
+                      lineageId="Package\InsertData\Columna derivada 2.Outputs[Salida de columna derivada].Columns[StartDate]" />
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[TargetStockLevel]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[StockItemID]"
                       cachedDataType="i4"
-                      cachedName="TargetStockLevel"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Target Stock Level]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]" />
+                      cachedName="StockItemID"
+                      externalMetadataColumnId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Stock Item Key]"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]" />
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[LastCostPrice]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[QuantityOnHand]"
+                      cachedDataType="i4"
+                      cachedName="QuantityOnHand"
+                      externalMetadataColumnId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity On Hand]"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]" />
+                    <inputColumn
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[BinLocation]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="BinLocation"
+                      externalMetadataColumnId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Bin Location]"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]" />
+                    <inputColumn
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[LastStocktakeQuantity]"
+                      cachedDataType="i4"
+                      cachedName="LastStocktakeQuantity"
+                      externalMetadataColumnId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Last Stocktake Quantity]"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]" />
+                    <inputColumn
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[LastCostPrice]"
                       cachedDataType="numeric"
                       cachedName="LastCostPrice"
                       cachedPrecision="18"
                       cachedScale="2"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Last Cost Price]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastCostPrice]" />
+                      externalMetadataColumnId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Last Cost Price]"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]" />
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[LastStocktakeQuantity]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[ReorderLevel]"
                       cachedDataType="i4"
-                      cachedName="LastStocktakeQuantity"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Last Stocktake Quantity]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]" />
+                      cachedName="ReorderLevel"
+                      externalMetadataColumnId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Reorder Level]"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]" />
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[BinLocation]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
-                      cachedName="BinLocation"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Bin Location]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]" />
-                    <inputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[QuantityOnHand]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[TargetStockLevel]"
                       cachedDataType="i4"
-                      cachedName="QuantityOnHand"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity On Hand]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]" />
+                      cachedName="TargetStockLevel"
+                      externalMetadataColumnId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Target Stock Level]"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]" />
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[StockItemID]"
-                      cachedDataType="i4"
-                      cachedName="StockItemID"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Stock Item Key]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]" />
-                    <inputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[LineageKey]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].Columns[LineageKey]"
                       cachedDataType="i4"
                       cachedName="LineageKey"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Lineage Key]"
-                      lineageId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]" />
+                      externalMetadataColumnId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Lineage Key]"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LineageKey]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Stock Holding Key]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Stock Holding Key]"
                       dataType="i8"
                       name="Stock Holding Key" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Stock Item Key]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Stock Item Key]"
                       dataType="i4"
                       name="Stock Item Key" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity On Hand]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity On Hand]"
                       dataType="i4"
                       name="Quantity On Hand" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Bin Location]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Bin Location]"
                       dataType="wstr"
                       length="20"
                       name="Bin Location" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Last Stocktake Quantity]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Last Stocktake Quantity]"
                       dataType="i4"
                       name="Last Stocktake Quantity" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Last Cost Price]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Last Cost Price]"
                       dataType="numeric"
                       name="Last Cost Price"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Reorder Level]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Reorder Level]"
                       dataType="i4"
                       name="Reorder Level" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Target Stock Level]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Target Stock Level]"
                       dataType="i4"
                       name="Target Stock Level" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Lineage Key]"
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[Lineage Key]"
                       dataType="i4"
                       name="Lineage Key" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[StartDate]"
+                      dataType="dbTimeStamp"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB].ExternalColumns[EndDate]"
+                      dataType="dbTimeStamp"
+                      name="EndDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                  refId="Package\InsertData\Insertar destino.Outputs[Salida de error de destino de OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de destino de OLE DB"
-                  synchronousInputId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                  synchronousInputId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      refId="Package\InsertData\Insertar destino.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\InsertData\Insertar destino.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      refId="Package\InsertData\Insertar destino.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\InsertData\Insertar destino.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -324,7 +1284,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Tarea Flujo de datos\Origen de OLE DB"
+              refId="Package\InsertData\Origen de OLE DB"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
               description="Origen de OLE DB"
@@ -373,7 +1333,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarea Flujo de datos\Origen de OLE DB.Connections[OleDbConnection]"
+                  refId="Package\InsertData\Origen de OLE DB.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -381,205 +1341,568 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
                   name="Salida de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[StockItemID]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]"
+                      externalMetadataColumnId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[StockItemID]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]"
                       name="StockItemID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[QuantityOnHand]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]"
+                      externalMetadataColumnId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[QuantityOnHand]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]"
                       name="QuantityOnHand"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[BinLocation]"
+                      externalMetadataColumnId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[BinLocation]"
                       length="20"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]"
                       name="BinLocation"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastStocktakeQuantity]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]"
+                      externalMetadataColumnId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastStocktakeQuantity]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]"
                       name="LastStocktakeQuantity"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastCostPrice]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastCostPrice]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastCostPrice]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastCostPrice]"
+                      externalMetadataColumnId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastCostPrice]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastCostPrice]"
                       name="LastCostPrice"
                       precision="18"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ReorderLevel]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]"
+                      externalMetadataColumnId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ReorderLevel]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]"
                       name="ReorderLevel"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TargetStockLevel]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]"
+                      externalMetadataColumnId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TargetStockLevel]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]"
                       name="TargetStockLevel"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedBy]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedBy]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastEditedBy]"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedBy]"
+                      externalMetadataColumnId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastEditedBy]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedBy]"
                       name="LastEditedBy"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedWhen]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedWhen]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastEditedWhen]"
+                      externalMetadataColumnId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastEditedWhen]"
                       length="27"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedWhen]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedWhen]"
                       name="LastEditedWhen"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[StockItemID]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[StockItemID]"
                       dataType="i4"
                       name="StockItemID" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[QuantityOnHand]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[QuantityOnHand]"
                       dataType="i4"
                       name="QuantityOnHand" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[BinLocation]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[BinLocation]"
                       dataType="wstr"
                       length="20"
                       name="BinLocation" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastStocktakeQuantity]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastStocktakeQuantity]"
                       dataType="i4"
                       name="LastStocktakeQuantity" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastCostPrice]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastCostPrice]"
                       dataType="numeric"
                       name="LastCostPrice"
                       precision="18"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ReorderLevel]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[ReorderLevel]"
                       dataType="i4"
                       name="ReorderLevel" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TargetStockLevel]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TargetStockLevel]"
                       dataType="i4"
                       name="TargetStockLevel" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastEditedBy]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastEditedBy]"
                       dataType="i4"
                       name="LastEditedBy" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastEditedWhen]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[LastEditedWhen]"
                       dataType="wstr"
                       length="27"
                       name="LastEditedWhen" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
                   isErrorOut="true"
                   name="Salida de error de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[StockItemID]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[StockItemID]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[StockItemID]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[StockItemID]"
                       name="StockItemID" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[QuantityOnHand]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[QuantityOnHand]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[QuantityOnHand]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[QuantityOnHand]"
                       name="QuantityOnHand" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[BinLocation]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[BinLocation]"
                       dataType="wstr"
                       length="20"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[BinLocation]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[BinLocation]"
                       name="BinLocation" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastStocktakeQuantity]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastStocktakeQuantity]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastStocktakeQuantity]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastStocktakeQuantity]"
                       name="LastStocktakeQuantity" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastCostPrice]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastCostPrice]"
                       dataType="numeric"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastCostPrice]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastCostPrice]"
                       name="LastCostPrice"
                       precision="18"
                       scale="2" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ReorderLevel]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ReorderLevel]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ReorderLevel]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ReorderLevel]"
                       name="ReorderLevel" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TargetStockLevel]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TargetStockLevel]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TargetStockLevel]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TargetStockLevel]"
                       name="TargetStockLevel" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastEditedBy]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastEditedBy]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastEditedBy]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastEditedBy]"
                       name="LastEditedBy" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastEditedWhen]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastEditedWhen]"
                       dataType="wstr"
                       length="27"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastEditedWhen]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[LastEditedWhen]"
                       name="LastEditedWhen" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      refId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\InsertData\Unión de todo"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unión de todo;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina las filas de varios flujos de datos sin ordenarlos. Por ejemplo, devuelve filas a un flujo de datos después de corregir los errores. Si el orden es importante, se recomienda usar la transformación Mezclar."
+              name="Unión de todo"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1]"
+                  name="Entrada de Unión de todo 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[StockItemID]"
+                      cachedDataType="i4"
+                      cachedName="StockItemID"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[QuantityOnHand]"
+                      cachedDataType="i4"
+                      cachedName="QuantityOnHand"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[BinLocation]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="BinLocation"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastStocktakeQuantity]"
+                      cachedDataType="i4"
+                      cachedName="LastStocktakeQuantity"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastCostPrice]"
+                      cachedDataType="numeric"
+                      cachedName="LastCostPrice"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastCostPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[ReorderLevel]"
+                      cachedDataType="i4"
+                      cachedName="ReorderLevel"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[TargetStockLevel]"
+                      cachedDataType="i4"
+                      cachedName="TargetStockLevel"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastEditedBy]"
+                      cachedDataType="i4"
+                      cachedName="LastEditedBy"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedBy]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastEditedWhen]"
+                      cachedDataType="wstr"
+                      cachedLength="27"
+                      cachedName="LastEditedWhen"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedWhen]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LineageKey]"
+                      cachedDataType="i4"
+                      cachedName="LineageKey"
+                      lineageId="Package\InsertData\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LineageKey]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2]"
+                  hasSideEffects="true"
+                  name="Entrada de Unión de todo 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[StockItemID]"
+                      cachedDataType="i4"
+                      cachedName="StockItemID"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[StockItemID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[QuantityOnHand]"
+                      cachedDataType="i4"
+                      cachedName="QuantityOnHand"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[QuantityOnHand]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[BinLocation]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="BinLocation"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[BinLocation]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastStocktakeQuantity]"
+                      cachedDataType="i4"
+                      cachedName="LastStocktakeQuantity"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastStocktakeQuantity]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastCostPrice]"
+                      cachedDataType="numeric"
+                      cachedName="LastCostPrice"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastCostPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[ReorderLevel]"
+                      cachedDataType="i4"
+                      cachedName="ReorderLevel"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[ReorderLevel]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[TargetStockLevel]"
+                      cachedDataType="i4"
+                      cachedName="TargetStockLevel"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TargetStockLevel]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastEditedBy]"
+                      cachedDataType="i4"
+                      cachedName="LastEditedBy"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedBy]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastEditedWhen]"
+                      cachedDataType="wstr"
+                      cachedLength="27"
+                      cachedName="LastEditedWhen"
+                      lineageId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[LastEditedWhen]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LineageKey]"
+                      cachedDataType="i4"
+                      cachedName="LineageKey"
+                      lineageId="Package\InsertData\Columna derivada 1.Outputs[Salida de columna derivada].Columns[LineageKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LineageKey]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrada de Unión de todo 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1]"
+                  name="Salida de Unión de todo 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]"
+                      name="StockItemID" />
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]"
+                      name="QuantityOnHand" />
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]"
+                      name="BinLocation" />
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]"
+                      name="LastStocktakeQuantity" />
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]"
+                      dataType="numeric"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]"
+                      name="LastCostPrice"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]"
+                      name="ReorderLevel" />
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]"
+                      name="TargetStockLevel" />
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]"
+                      name="LastEditedBy" />
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]"
+                      dataType="wstr"
+                      length="27"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]"
+                      name="LastEditedWhen" />
+                    <outputColumn
+                      refId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LineageKey]"
+                      dataType="i4"
+                      lineageId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LineageKey]"
+                      name="LineageKey" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -588,15 +1911,55 @@
           </components>
           <paths>
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
-              endId="Package\Tarea Flujo de datos\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
-              name="Salida de columna derivada"
-              startId="Package\Tarea Flujo de datos\Columna derivada 1.Outputs[Salida de columna derivada]" />
+              refId="Package\InsertData.Paths[Nueva salida]"
+              endId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 1]"
+              name="Nueva salida"
+              startId="Package\InsertData\Dimensión de variación lenta.Outputs[Nueva salida]" />
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB]"
-              endId="Package\Tarea Flujo de datos\Columna derivada 1.Inputs[Entrada de columna derivada]"
+              refId="Package\InsertData.Paths[Salida de actualizaciones de atributos variables]"
+              endId="Package\InsertData\Comando de OLE DB 2.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de actualizaciones de atributos variables"
+              startId="Package\InsertData\Dimensión de variación lenta.Outputs[Salida de actualizaciones de atributos variables]" />
+            <path
+              refId="Package\InsertData.Paths[Salida de actualizaciones de miembros deducidos]"
+              endId="Package\InsertData\Comando de OLE DB 1.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de actualizaciones de miembros deducidos"
+              startId="Package\InsertData\Dimensión de variación lenta.Outputs[Salida de actualizaciones de miembros deducidos]" />
+            <path
+              refId="Package\InsertData.Paths[Salida de columna derivada]"
+              endId="Package\InsertData\Dimensión de variación lenta.Inputs[Entrada de dimensión de variación lenta]"
+              name="Salida de columna derivada"
+              startId="Package\InsertData\Columna derivada 1.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\InsertData.Paths[Salida de columna derivada1]"
+              endId="Package\InsertData\Comando de OLE DB.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\InsertData\Columna derivada.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\InsertData.Paths[Salida de columna derivada2]"
+              endId="Package\InsertData\Insertar destino.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\InsertData\Columna derivada 2.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\InsertData.Paths[Salida de comando de OLE DB]"
+              endId="Package\InsertData\Unión de todo.Inputs[Entrada de Unión de todo 2]"
+              name="Salida de comando de OLE DB"
+              startId="Package\InsertData\Comando de OLE DB.Outputs[Salida de comando de OLE DB]" />
+            <path
+              refId="Package\InsertData.Paths[Salida de inserciones de atributos históricos]"
+              endId="Package\InsertData\Columna derivada.Inputs[Entrada de columna derivada]"
+              name="Salida de inserciones de atributos históricos"
+              startId="Package\InsertData\Dimensión de variación lenta.Outputs[Salida de inserciones de atributos históricos]" />
+            <path
+              refId="Package\InsertData.Paths[Salida de origen de OLE DB]"
+              endId="Package\InsertData\Columna derivada 1.Inputs[Entrada de columna derivada]"
               name="Salida de origen de OLE DB"
-              startId="Package\Tarea Flujo de datos\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\InsertData\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\InsertData.Paths[Salida de Unión de todo 1]"
+              endId="Package\InsertData\Columna derivada 2.Inputs[Entrada de columna derivada]"
+              name="Salida de Unión de todo 1"
+              startId="Package\InsertData\Unión de todo.Outputs[Salida de Unión de todo 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -615,43 +1978,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="180,42"
-          Id="Package\Tarea Flujo de datos"
+          Size="130,42"
+          Id="Package\InsertData"
           TopLeft="84,38" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Tarea Flujo de datos">
+    design-time-name="Package\InsertData">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Tarea Flujo de datos\Destino de OLE DB"
-          TopLeft="273,124" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170,42"
-          Id="Package\Tarea Flujo de datos\Origen de OLE DB"
-          TopLeft="41,22" />
+          Id="Package\InsertData\Origen de OLE DB"
+          TopLeft="167,5.5" />
         <NodeLayout
           Size="177,42"
-          Id="Package\Tarea Flujo de datos\Columna derivada 1"
-          TopLeft="33,119" />
+          Id="Package\InsertData\Columna derivada 1"
+          TopLeft="163.5,107.5" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB]"
-          TopLeft="123.75,64">
+          Id="Package\InsertData.Paths[Salida de origen de OLE DB]"
+          TopLeft="252,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,47.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -660,33 +2019,321 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="220,42"
+          Id="Package\InsertData\Dimensión de variación lenta"
+          TopLeft="142,209.5" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
-          TopLeft="210,142.5">
+          Id="Package\InsertData.Paths[Salida de columna derivada]"
+          TopLeft="252,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="63,0"
+              EndConnector="0,60"
               Start="0,0"
-              End="55.5,0">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="55.5,0" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="168,42"
+          Id="Package\InsertData\Columna derivada"
+          TopLeft="23,311.5" />
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de inserciones de atributos históricos]"
+          TopLeft="188.4,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-81.4,60.0000000000001"
+              Start="0,0"
+              End="-81.4,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8005115089514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8005115089514"
+                    Point2="0,17.8005115089514"
+                    Point3="-4,17.8005115089514" />
+                  <mssgle:LineSegment
+                    End="-77.4,17.8005115089514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-77.4,17.8005115089514"
+                    Point2="-81.4,17.8005115089514"
+                    Point3="-81.4,21.8005115089514" />
+                  <mssgle:LineSegment
+                    End="-81.4,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-137.6882421875,22.8005115089514,193.976484375,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="185,42"
+          Id="Package\InsertData\Comando de OLE DB"
+          TopLeft="5.5,413.5" />
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de columna derivada1]"
+          TopLeft="107,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,60"
+              Start="0,0"
+              End="-9,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,30"
+                    Point2="-9,30"
+                    Point3="-9,34" />
+                  <mssgle:LineSegment
+                    End="-9,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147,42"
+          Id="Package\InsertData\Unión de todo"
+          TopLeft="178.5,515.5" />
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Nueva salida]"
+          TopLeft="230.8,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.3666666666666,264"
+              Start="0,0"
+              End="44.3666666666666,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,138.834165966665" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,138.834165966665"
+                    Point2="0,142.834165966665"
+                    Point3="4,142.834165966665" />
+                  <mssgle:LineSegment
+                    End="40.3666666666666,142.834165966665" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.3666666666666,142.834165966665"
+                    Point2="44.3666666666666,142.834165966665"
+                    Point3="44.3666666666666,146.834165966665" />
+                  <mssgle:LineSegment
+                    End="44.3666666666666,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.10502604166669,147.834165966665,56.57671875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de comando de OLE DB]"
+          TopLeft="98,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="130.833333333333,59.9999999999999"
+              Start="0,0"
+              End="130.833333333333,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6123822341857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6123822341857"
+                    Point2="0,35.6123822341857"
+                    Point3="4,35.6123822341857" />
+                  <mssgle:LineSegment
+                    End="126.833333333333,35.6123822341857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="126.833333333333,35.6123822341857"
+                    Point2="130.833333333333,35.6123822341857"
+                    Point3="130.833333333333,39.6123822341857" />
+                  <mssgle:LineSegment
+                    End="130.833333333333,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177,42"
+          Id="Package\InsertData\Columna derivada 2"
+          TopLeft="163.5,617.5" />
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de Unión de todo 1]"
+          TopLeft="252,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\InsertData\Insertar destino"
+          TopLeft="174.5,719.5" />
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de columna derivada2]"
+          TopLeft="252,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="194,42"
+          Id="Package\InsertData\Comando de OLE DB 1"
+          TopLeft="313,311.5" />
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de actualizaciones de miembros deducidos]"
+          TopLeft="273.2,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="136.8,60"
+              Start="0,0"
+              End="136.8,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.8008048289738" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.8008048289738"
+                    Point2="0,26.8008048289738"
+                    Point3="4,26.8008048289738" />
+                  <mssgle:LineSegment
+                    End="132.8,26.8008048289738" />
+                  <mssgle:CubicBezierSegment
+                    Point1="132.8,26.8008048289738"
+                    Point2="136.8,26.8008048289738"
+                    Point3="136.8,30.8008048289738" />
+                  <mssgle:LineSegment
+                    End="136.8,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-40.7832421875,31.8008048289738,218.366484375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="194,42"
+          Id="Package\InsertData\Comando de OLE DB 2"
+          TopLeft="568,311.5" />
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de actualizaciones de atributos variables]"
+          TopLeft="315.6,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="349.4,60"
+              Start="0,0"
+              End="349.4,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8005115089514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8005115089514"
+                    Point2="0,17.8005115089514"
+                    Point3="4,17.8005115089514" />
+                  <mssgle:LineSegment
+                    End="345.4,17.8005115089514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="345.4,17.8005115089514"
+                    Point2="349.4,17.8005115089514"
+                    Point3="349.4,21.8005115089514" />
+                  <mssgle:LineSegment
+                    End="349.4,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="70.4467578125,22.8005115089514,208.506484375,9.7490234375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Destino de OLE DB">
+    design-time-name="Package\InsertData\Origen de OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -699,7 +2346,89 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Origen de OLE DB">
+    design-time-name="Package\InsertData\Dimensión de variación lenta">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{47BEE6B6-94DD-454A-8005-77D7077496B4}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[Fact].[Stock Holding]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[BinLocation]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Bin Location&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[LastCostPrice]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Last Cost Price&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[LastStocktakeQuantity]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Last Stocktake Quantity&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Columna derivada 1.Salidas[Salida de columna derivada].Columnas[LineageKey]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Lineage Key&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[QuantityOnHand]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Quantity On Hand&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[ReorderLevel]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Reorder Level&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[StockItemID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Stock Item Key&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origen de OLE DB.Salidas[Salida de origen de OLE DB].Columnas[TargetStockLevel]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Target Stock Level&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Columna derivada&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando de OLE DB&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Unión de todo&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Columna derivada 2&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insertar destino&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando de OLE DB 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando de OLE DB 2&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;StartDateColumn&gt;StartDate&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;EndDate&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\InsertData\Insertar destino">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
