@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{520ADB98-8A41-419B-8CF2-253EAFDFFE31}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{89FD66E8-4321-4DE0-8476-55516387FC1C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2067,17 +2067,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="130,42"
-          Id="Package\InsertData"
-          TopLeft="217,103" />
-        <NodeLayout
           Size="221,42"
           Id="Package\Identificar Cargamento Inicial"
           TopLeft="170,20" />
         <NodeLayout
           Size="251,42"
           Id="Package\Identificar fin del cargamento inicial"
-          TopLeft="151,189" />
+          TopLeft="159,190" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\InsertData"
+          TopLeft="217,103" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="281.25,62">
@@ -2102,18 +2102,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="279.25,145">
+          TopLeft="283.25,145">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44"
+              EndConnector="0,45"
               Start="0,0"
-              End="0,36.5">
+              End="0,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="0,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2202,7 +2202,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-6.10502604166669,147.834165966665,56.57671875,9.7490234375"
+              BoundingBox="-6.1050260416667,147.834165966665,56.57671875,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
