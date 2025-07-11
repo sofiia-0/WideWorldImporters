@@ -1,0 +1,1973 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/11/2025 9:34:49 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CELESTE"
+  DTS:CreatorName="CELESTE\Celeste Obregón"
+  DTS:DTSID="{10DB3806-5C3B-49F1-AA36-9E32F6C194E5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="6154"
+  DTS:ObjectName="Excel"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{639F838C-891C-4C1A-9B59-3F564CC02053}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{EEE4FF66-B928-4D14-A6BA-4397CF76FC03}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\Celeste Obregòn\Documents\Fact_StockHolding_Equipo_Celeste.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3EC226C7-E087-4172-915F-8EBDEABE28AF}"
+      DTS:ObjectName="LocalHost.WideWorldImporters">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=WideWorldImporters;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Excel-{3EC226C7-E087-4172-915F-8EBDEABE28AF}LocalHost.WideWorldImporters;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Excel Control"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{D4877767-8D46-4624-A16F-2659569AC75F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Excel Control"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Excel Control\DATE"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="DATE"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Excel Control\DATE.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Excel Control\DATE.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Excel Control\DATE.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\DATE.Outputs[Salida de columna derivada].Columns[LastEditedBy]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Excel Control\DATE.Outputs[Salida de columna derivada].Columns[LastEditedBy]"
+                      name="LastEditedBy"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_I4)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Excel Control\DATE.Outputs[Salida de columna derivada].Columns[LastEditedWhen]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Excel Control\DATE.Outputs[Salida de columna derivada].Columns[LastEditedWhen]"
+                      name="LastEditedWhen"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_DBTIMESTAMP)[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Excel Control\DATE.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Excel Control\DATE.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\DATE.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\DATE.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Excel Control\DATE.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\DATE.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Excel Control\Fix key"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Fix key"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Excel Control\Fix key.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Excel Control\Fix key.Inputs[Entrada de columna derivada].Columns[Stock Item Key]"
+                      cachedDataType="r8"
+                      cachedName="Stock Item Key"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Stock Item Key]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Fix key.Inputs[Entrada de columna derivada].Columns[Bin Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bin Location"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Bin Location]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Excel Control\Fix key.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]"
+                      name="StockItemKey_INT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_I4)#{Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Stock Item Key]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)[Stock Item Key]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[BinLocation_Adjusted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[BinLocation_Adjusted]"
+                      name="BinLocation_Adjusted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_STR,20,1252)#{Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Bin Location]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,20,1252)[Bin Location]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[DATETIME]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[DATETIME]"
+                      name="DATETIME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Excel Control\Fix key.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Excel Control\Fix key.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Fix key.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Excel Control\Fix key.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Excel Control\Insert"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Insert"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO [Warehouse].[StockItemHoldings] 
+(StockItemID, QuantityOnHand, BinLocation, LastStocktakeQuantity, LastCostPrice, ReorderLevel, TargetStockLevel, LastEditedBy, LastEditedWhen)
+VALUES (?, ?, ?, ?, ?, ?, ?, 1, GETDATE())
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Excel Control\Insert.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].Columns[StockItemKey_INT]"
+                      cachedDataType="i4"
+                      cachedName="StockItemKey_INT"
+                      externalMetadataColumnId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].Columns[Quantity On Hand]"
+                      cachedDataType="r8"
+                      cachedName="Quantity On Hand"
+                      externalMetadataColumnId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Quantity On Hand]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].Columns[Bin Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bin Location"
+                      externalMetadataColumnId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Bin Location]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].Columns[Last Stocktake Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Last Stocktake Quantity"
+                      externalMetadataColumnId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Stocktake Quantity]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].Columns[Last Cost Price]"
+                      cachedDataType="r8"
+                      cachedName="Last Cost Price"
+                      externalMetadataColumnId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Cost Price]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].Columns[Reorder Level]"
+                      cachedDataType="r8"
+                      cachedName="Reorder Level"
+                      externalMetadataColumnId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Reorder Level]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].Columns[Target Stock Level]"
+                      cachedDataType="r8"
+                      cachedName="Target Stock Level"
+                      externalMetadataColumnId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Target Stock Level]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="20"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      dataType="numeric"
+                      name="Param_4"
+                      precision="18"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Excel Control\Insert.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Excel Control\Insert.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Insert.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Insert.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Excel Control\Insert.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Insert.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Excel Control\Insert New"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Insert New"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Warehouse].[StockItemHoldings]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Excel Control\Insert New.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].Columns[LastEditedBy]"
+                      cachedDataType="i4"
+                      cachedName="LastEditedBy"
+                      externalMetadataColumnId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastEditedBy]"
+                      lineageId="Package\Excel Control\DATE.Outputs[Salida de columna derivada].Columns[LastEditedBy]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].Columns[LastEditedWhen]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastEditedWhen"
+                      externalMetadataColumnId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastEditedWhen]"
+                      lineageId="Package\Excel Control\DATE.Outputs[Salida de columna derivada].Columns[LastEditedWhen]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].Columns[StockItemKey_INT]"
+                      cachedDataType="i4"
+                      cachedName="StockItemKey_INT"
+                      externalMetadataColumnId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[StockItemID]"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].Columns[Quantity On Hand]"
+                      cachedDataType="r8"
+                      cachedName="Quantity On Hand"
+                      externalMetadataColumnId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[QuantityOnHand]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Quantity On Hand]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].Columns[Bin Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bin Location"
+                      externalMetadataColumnId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[BinLocation]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Bin Location]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].Columns[Last Stocktake Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Last Stocktake Quantity"
+                      externalMetadataColumnId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastStocktakeQuantity]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Stocktake Quantity]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].Columns[Last Cost Price]"
+                      cachedDataType="r8"
+                      cachedName="Last Cost Price"
+                      externalMetadataColumnId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastCostPrice]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Cost Price]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].Columns[Reorder Level]"
+                      cachedDataType="r8"
+                      cachedName="Reorder Level"
+                      externalMetadataColumnId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[ReorderLevel]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Reorder Level]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].Columns[Target Stock Level]"
+                      cachedDataType="r8"
+                      cachedName="Target Stock Level"
+                      externalMetadataColumnId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[TargetStockLevel]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Target Stock Level]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[StockItemID]"
+                      dataType="i4"
+                      name="StockItemID" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[QuantityOnHand]"
+                      dataType="i4"
+                      name="QuantityOnHand" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[BinLocation]"
+                      dataType="wstr"
+                      length="20"
+                      name="BinLocation" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastStocktakeQuantity]"
+                      dataType="i4"
+                      name="LastStocktakeQuantity" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastCostPrice]"
+                      dataType="numeric"
+                      name="LastCostPrice"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[ReorderLevel]"
+                      dataType="i4"
+                      name="ReorderLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[TargetStockLevel]"
+                      dataType="i4"
+                      name="TargetStockLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastEditedBy]"
+                      dataType="i4"
+                      name="LastEditedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB].ExternalColumns[LastEditedWhen]"
+                      dataType="wstr"
+                      length="27"
+                      name="LastEditedWhen" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Excel Control\Insert New.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Insert New.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Insert New.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Excel Control\Insert New.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Insert New.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Excel Control\Insert non existent"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Insert non existent"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Warehouse].[StockItemsNoMatchLog]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Excel Control\Insert non existent.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].Columns[StockItemKey_INT]"
+                      cachedDataType="i4"
+                      cachedName="StockItemKey_INT"
+                      externalMetadataColumnId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].ExternalColumns[StockItemKey]"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].Columns[DATETIME]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DATETIME"
+                      externalMetadataColumnId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaRegistro]"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[DATETIME]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].Columns[Bin Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bin Location"
+                      externalMetadataColumnId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].ExternalColumns[BinLocation]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Bin Location]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].ExternalColumns[StockItemKey]"
+                      dataType="i4"
+                      name="StockItemKey" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].ExternalColumns[BinLocation]"
+                      dataType="wstr"
+                      length="50"
+                      name="BinLocation" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaRegistro]"
+                      dataType="dbTimeStamp"
+                      name="FechaRegistro" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Excel Control\Insert non existent.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Insert non existent.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Insert non existent.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Excel Control\Insert non existent.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Insert non existent.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Excel Control\Origen de Excel"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="Origen de Excel"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Excel Control\Origen de Excel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                  connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Stock Holding Key]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Stock Holding Key]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Stock Holding Key]"
+                      name="Stock Holding Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Stock Item Key]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Stock Item Key]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Stock Item Key]"
+                      name="Stock Item Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Quantity On Hand]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Quantity On Hand]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Quantity On Hand]"
+                      name="Quantity On Hand"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Bin Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Bin Location]"
+                      length="255"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Bin Location]"
+                      name="Bin Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Stocktake Quantity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Last Stocktake Quantity]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Stocktake Quantity]"
+                      name="Last Stocktake Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Cost Price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Last Cost Price]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Cost Price]"
+                      name="Last Cost Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Reorder Level]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Reorder Level]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Reorder Level]"
+                      name="Reorder Level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Target Stock Level]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Target Stock Level]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Target Stock Level]"
+                      name="Target Stock Level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Lineage Key]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Lineage Key]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Lineage Key]"
+                      name="Lineage Key"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Stock Holding Key]"
+                      dataType="r8"
+                      name="Stock Holding Key" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Stock Item Key]"
+                      dataType="r8"
+                      name="Stock Item Key" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Quantity On Hand]"
+                      dataType="r8"
+                      name="Quantity On Hand" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Bin Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Bin Location" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Last Stocktake Quantity]"
+                      dataType="r8"
+                      name="Last Stocktake Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Last Cost Price]"
+                      dataType="r8"
+                      name="Last Cost Price" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Reorder Level]"
+                      dataType="r8"
+                      name="Reorder Level" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Target Stock Level]"
+                      dataType="r8"
+                      name="Target Stock Level" />
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Lineage Key]"
+                      dataType="r8"
+                      name="Lineage Key" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Stock Holding Key]"
+                      dataType="r8"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Stock Holding Key]"
+                      name="Stock Holding Key" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Stock Item Key]"
+                      dataType="r8"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Stock Item Key]"
+                      name="Stock Item Key" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Quantity On Hand]"
+                      dataType="r8"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Quantity On Hand]"
+                      name="Quantity On Hand" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Bin Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Bin Location]"
+                      name="Bin Location" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Last Stocktake Quantity]"
+                      dataType="r8"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Last Stocktake Quantity]"
+                      name="Last Stocktake Quantity" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Last Cost Price]"
+                      dataType="r8"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Last Cost Price]"
+                      name="Last Cost Price" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Reorder Level]"
+                      dataType="r8"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Reorder Level]"
+                      name="Reorder Level" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Target Stock Level]"
+                      dataType="r8"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Target Stock Level]"
+                      name="Target Stock Level" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Lineage Key]"
+                      dataType="r8"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Lineage Key]"
+                      name="Lineage Key" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Excel Control\Stock Item ID Validate"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Stock Item ID Validate"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT StockItemID FROM [Warehouse].[StockItems]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT StockItemID FROM [Warehouse].[StockItems]) [refTable]
+where [refTable].[StockItemID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="StockItemID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Excel Control\Stock Item ID Validate.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Excel Control\Stock Item ID Validate.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Excel Control\Stock Item ID Validate.Inputs[Entrada de búsqueda].Columns[StockItemKey_INT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="StockItemKey_INT"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">StockItemID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Excel Control\Stock Item ID Validate.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Excel Control\Stock Item ID Validate.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Excel Control\Stock Item ID Validate.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Excel Control\Stock Item ID Validate.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Excel Control\Stock Item ID Validate.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Excel Control\Stock Item ID Validate.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Stock Item ID Validate.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Stock Item ID Validate.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Excel Control\Stock Item ID Validate.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Stock Item ID Validate.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Excel Control\Update"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Ejecuta una instrucción SQL para cada fila de un flujo de datos. Por ejemplo, se usa para llamar al procedimiento almacenado de configuración de nuevo empleado para cada fila de la tabla de nuevos empleados. Nota: la ejecución de una instrucción SQL para cada fila de un flujo de datos de gran tamaño puede tardar mucho tiempo."
+              name="Update"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [Warehouse].[StockItemHoldings]
+SET 
+    QuantityOnHand = ?, 
+    BinLocation = ?, 
+    LastStocktakeQuantity = ?, 
+    LastCostPrice = ?, 
+    ReorderLevel = ?, 
+    TargetStockLevel = ?, 
+    LastEditedBy = 1, 
+    LastEditedWhen = GETDATE()
+WHERE StockItemID = ?
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Excel Control\Update.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB]"
+                  errorOrTruncationOperation="Ejecución de comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de comando de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].Columns[Quantity On Hand]"
+                      cachedDataType="r8"
+                      cachedName="Quantity On Hand"
+                      externalMetadataColumnId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Quantity On Hand]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].Columns[Bin Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Bin Location"
+                      externalMetadataColumnId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Bin Location]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].Columns[Last Stocktake Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Last Stocktake Quantity"
+                      externalMetadataColumnId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Stocktake Quantity]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].Columns[Last Cost Price]"
+                      cachedDataType="r8"
+                      cachedName="Last Cost Price"
+                      externalMetadataColumnId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Last Cost Price]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].Columns[Reorder Level]"
+                      cachedDataType="r8"
+                      cachedName="Reorder Level"
+                      externalMetadataColumnId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Reorder Level]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].Columns[Target Stock Level]"
+                      cachedDataType="r8"
+                      cachedName="Target Stock Level"
+                      externalMetadataColumnId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Target Stock Level]" />
+                    <inputColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].Columns[StockItemKey_INT]"
+                      cachedDataType="i4"
+                      cachedName="StockItemKey_INT"
+                      externalMetadataColumnId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="20"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_3]"
+                      dataType="numeric"
+                      name="Param_3"
+                      precision="18"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Información de parámetros. Coincide con los valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Excel Control\Update.Outputs[Salida de comando de OLE DB]"
+                  exclusionGroup="1"
+                  name="Salida de comando de OLE DB"
+                  synchronousInputId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Excel Control\Update.Outputs[Salida de error de comando de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de comando de OLE DB"
+                  synchronousInputId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Update.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Update.Outputs[Salida de error de comando de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Excel Control\Update.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Update.Outputs[Salida de error de comando de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Excel Control\Update or Insert"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Update or Insert"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT StockItemID FROM [Warehouse].[StockItemHoldings]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT StockItemID FROM [Warehouse].[StockItemHoldings]) [refTable]
+where [refTable].[StockItemID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="StockItemID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Excel Control\Update or Insert.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImporters]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Excel Control\Update or Insert.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Excel Control\Update or Insert.Inputs[Entrada de búsqueda].Columns[StockItemKey_INT]"
+                      cachedDataType="i4"
+                      cachedName="StockItemKey_INT"
+                      lineageId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada].Columns[StockItemKey_INT]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">StockItemID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Excel Control\Update or Insert.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Excel Control\Update or Insert.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Excel Control\Update or Insert.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Excel Control\Update or Insert.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Excel Control\Update or Insert.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Excel Control\Update or Insert.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Excel Control\Update or Insert.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Update or Insert.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Excel Control\Update or Insert.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Excel Control\Update or Insert.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Excel Control.Paths[Salida de columna derivada]"
+              endId="Package\Excel Control\Stock Item ID Validate.Inputs[Entrada de búsqueda]"
+              name="Salida de columna derivada"
+              startId="Package\Excel Control\Fix key.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Excel Control.Paths[Salida de columna derivada1]"
+              endId="Package\Excel Control\Insert New.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\Excel Control\DATE.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Excel Control.Paths[Salida de comando de OLE DB]"
+              endId="Package\Excel Control\DATE.Inputs[Entrada de columna derivada]"
+              name="Salida de comando de OLE DB"
+              startId="Package\Excel Control\Insert.Outputs[Salida de comando de OLE DB]" />
+            <path
+              refId="Package\Excel Control.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\Excel Control\Update or Insert.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Excel Control\Stock Item ID Validate.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Excel Control.Paths[Salida de entradas coincidentes de búsqueda1]"
+              endId="Package\Excel Control\Update.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Excel Control\Update or Insert.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Excel Control.Paths[Salida de entradas no coincidentes de búsqueda]"
+              endId="Package\Excel Control\Insert.Inputs[Entrada de comando de OLE DB]"
+              name="Salida de entradas no coincidentes de búsqueda"
+              startId="Package\Excel Control\Update or Insert.Outputs[Salida de entradas no coincidentes de búsqueda]" />
+            <path
+              refId="Package\Excel Control.Paths[Salida de entradas no coincidentes de búsqueda1]"
+              endId="Package\Excel Control\Insert non existent.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas no coincidentes de búsqueda"
+              startId="Package\Excel Control\Stock Item ID Validate.Outputs[Salida de entradas no coincidentes de búsqueda]" />
+            <path
+              refId="Package\Excel Control.Paths[Salida de origen de Excel]"
+              endId="Package\Excel Control\Fix key.Inputs[Entrada de columna derivada]"
+              name="Salida de origen de Excel"
+              startId="Package\Excel Control\Origen de Excel.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Excel Control"
+          TopLeft="394,59" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Excel Control">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Excel Control\Origen de Excel"
+          TopLeft="387,11" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Excel Control\Stock Item ID Validate"
+          TopLeft="643,99" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Excel Control\Insert New"
+          TopLeft="237,286" />
+        <NodeLayout
+          Size="114,42"
+          Id="Package\Excel Control\Fix key"
+          TopLeft="655,7" />
+        <EdgeLayout
+          Id="Package\Excel Control.Paths[Salida de origen de Excel]"
+          TopLeft="544,30">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111,0"
+              Start="0,0"
+              End="103.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="103.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Excel Control.Paths[Salida de columna derivada]"
+          TopLeft="712,49">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25,50"
+              Start="0,0"
+              End="25,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
+                  <mssgle:LineSegment
+                    End="21,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21,25"
+                    Point2="25,25"
+                    Point3="25,29" />
+                  <mssgle:LineSegment
+                    End="25,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="114,42"
+          Id="Package\Excel Control\Update"
+          TopLeft="453,194" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Excel Control\Insert"
+          TopLeft="265,102" />
+        <NodeLayout
+          Size="108,42"
+          Id="Package\Excel Control\DATE"
+          TopLeft="256,183" />
+        <EdgeLayout
+          Id="Package\Excel Control.Paths[Salida de comando de OLE DB]"
+          TopLeft="318.5,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.5,39"
+              Start="0,0"
+              End="-8.5,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="-4,19.5" />
+                  <mssgle:LineSegment
+                    End="-4.5,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.5,19.5"
+                    Point2="-8.5,19.5"
+                    Point3="-8.5,23.5" />
+                  <mssgle:LineSegment
+                    End="-8.5,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Excel Control.Paths[Salida de columna derivada1]"
+          TopLeft="306.25,225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Excel Control\Update or Insert"
+          TopLeft="429,101" />
+        <EdgeLayout
+          Id="Package\Excel Control.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="643,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-56,0"
+              Start="0,0"
+              End="-48.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-48.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-124.0690234375,5,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Excel Control.Paths[Salida de entradas coincidentes de búsqueda1]"
+          TopLeft="509,143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,15.65234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Excel Control.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="429,122.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-57,0"
+              Start="0,0"
+              End="-49.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-49.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-131.6390234375,5,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Excel Control\Insert non existent"
+          TopLeft="650,194" />
+        <EdgeLayout
+          Id="Package\Excel Control.Paths[Salida de entradas no coincidentes de búsqueda1]"
+          TopLeft="735.75,141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-106.8890234375,16.65234375,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Excel Control\Origen de Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Excel Control\Stock Item ID Validate">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Excel Control\Insert New">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Excel Control\Update or Insert">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Excel Control\Insert non existent">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

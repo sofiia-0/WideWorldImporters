@@ -11,8 +11,8 @@
   DTS:LocaleID="6154"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="67"
-  DTS:VersionGUID="{CC3A5A52-06A0-4470-9AB9-34B4465B72B2}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{CC5519C2-7E6B-4EE3-ADBA-1B1B5E83944F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -41,13 +41,13 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Contenedor de secuencias"
+      DTS:refId="Package\CDC - StockItemHoldings"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Contenedor de secuencias"
       DTS:DTSID="{74210140-3716-4CE9-9D5B-8B6EEEB24960}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Contenedor de secuencias">
+      DTS:ObjectName="CDC - StockItemHoldings">
       <DTS:Variables>
         <DTS:Variable
           DTS:CreationName=""
@@ -62,7 +62,7 @@
       </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Contenedor de secuencias\CDC Control Task  - Mark Range"
+          DTS:refId="Package\CDC - StockItemHoldings\CDC Control Task  - Mark Range"
           DTS:CreationName="Attunity.CdcControlTask"
           DTS:Description="CDC Control Task"
           DTS:DTSID="{65814d72-8453-4751-8937-f2d63a352538}"
@@ -87,7 +87,7 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Contenedor de secuencias\CDC Control Task  Get Range"
+          DTS:refId="Package\CDC - StockItemHoldings\CDC Control Task  Get Range"
           DTS:CreationName="Attunity.CdcControlTask"
           DTS:Description="CDC Control Task"
           DTS:DTSID="{6EB3951E-0290-403B-A9D5-95F9C7750D3D}"
@@ -112,7 +112,7 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Contenedor de secuencias\Tarea Flujo de datos"
+          DTS:refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Tarea Flujo de datos"
           DTS:DTSID="{72E6C11B-4904-4785-B77B-8C20813EB4A3}"
@@ -126,7 +126,7 @@
               version="1">
               <components>
                 <component
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source"
                   componentClassID="Microsoft.ManagedComponentHost"
                   contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
                   description="Reads change data from a SQL Server change table making it available for processing by downstream data-flow components. Only changes within the current processing range determined by the CDC Control task are read"
@@ -167,276 +167,276 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Connections[Connection]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Connections[Connection]"
                       connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImporters1]"
                       connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImporters1]"
                       name="Connection" />
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output]"
                       name="Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]"
                           dataType="bytes"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
                           length="10"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]"
                           name="__$start_lsn"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]"
                           dataType="i4"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]"
                           name="__$operation"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]"
                           dataType="bytes"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
                           length="128"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]"
                           name="__$update_mask"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]"
                           dataType="i4"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[StockItemID]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[StockItemID]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]"
                           name="StockItemID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]"
                           dataType="i4"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[QuantityOnHand]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[QuantityOnHand]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]"
                           name="QuantityOnHand"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]"
                           dataType="wstr"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[BinLocation]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[BinLocation]"
                           length="20"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]"
                           name="BinLocation"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]"
                           dataType="i4"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastStocktakeQuantity]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastStocktakeQuantity]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]"
                           name="LastStocktakeQuantity"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]"
                           dataType="numeric"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastCostPrice]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastCostPrice]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]"
                           name="LastCostPrice"
                           precision="18"
                           scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]"
                           dataType="i4"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[ReorderLevel]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[ReorderLevel]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]"
                           name="ReorderLevel"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]"
                           dataType="i4"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[TargetStockLevel]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[TargetStockLevel]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]"
                           name="TargetStockLevel"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]"
                           dataType="i4"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastEditedBy]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastEditedBy]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]"
                           name="LastEditedBy"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]"
                           dataType="dbTimeStamp2"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastEditedWhen]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastEditedWhen]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]"
                           name="LastEditedWhen"
                           scale="7"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]"
                           dataType="i4"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]"
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]"
                           name="__$command_id"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
                           dataType="bytes"
                           length="10"
                           name="__$start_lsn" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
                           dataType="i4"
                           name="__$operation" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
                           dataType="bytes"
                           length="128"
                           name="__$update_mask" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[StockItemID]"
                           dataType="i4"
                           name="StockItemID" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[QuantityOnHand]"
                           dataType="i4"
                           name="QuantityOnHand" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[BinLocation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[BinLocation]"
                           dataType="wstr"
                           length="20"
                           name="BinLocation" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastStocktakeQuantity]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastStocktakeQuantity]"
                           dataType="i4"
                           name="LastStocktakeQuantity" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastCostPrice]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastCostPrice]"
                           dataType="numeric"
                           name="LastCostPrice"
                           precision="18"
                           scale="2" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[ReorderLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[ReorderLevel]"
                           dataType="i4"
                           name="ReorderLevel" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[TargetStockLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[TargetStockLevel]"
                           dataType="i4"
                           name="TargetStockLevel" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastEditedBy]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastEditedBy]"
                           dataType="i4"
                           name="LastEditedBy" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastEditedWhen]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[LastEditedWhen]"
                           dataType="dbTimeStamp2"
                           name="LastEditedWhen"
                           scale="7" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
                           dataType="i4"
                           name="__$command_id" />
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput]"
                       isErrorOut="true"
                       name="ErrorOutput">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
                           dataType="bytes"
                           length="10"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
                           name="__$start_lsn" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
                           name="__$operation" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
                           dataType="bytes"
                           length="128"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
                           name="__$update_mask" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[StockItemID]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[StockItemID]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[StockItemID]"
                           name="StockItemID" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[QuantityOnHand]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[QuantityOnHand]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[QuantityOnHand]"
                           name="QuantityOnHand" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[BinLocation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[BinLocation]"
                           dataType="wstr"
                           length="20"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[BinLocation]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[BinLocation]"
                           name="BinLocation" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastStocktakeQuantity]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastStocktakeQuantity]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastStocktakeQuantity]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastStocktakeQuantity]"
                           name="LastStocktakeQuantity" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastCostPrice]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastCostPrice]"
                           dataType="numeric"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastCostPrice]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastCostPrice]"
                           name="LastCostPrice"
                           precision="18"
                           scale="2" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ReorderLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ReorderLevel]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ReorderLevel]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[ReorderLevel]"
                           name="ReorderLevel" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[TargetStockLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[TargetStockLevel]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[TargetStockLevel]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[TargetStockLevel]"
                           name="TargetStockLevel" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastEditedBy]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastEditedBy]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastEditedBy]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastEditedBy]"
                           name="LastEditedBy" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastEditedWhen]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastEditedWhen]"
                           dataType="dbTimeStamp2"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastEditedWhen]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[LastEditedWhen]"
                           name="LastEditedWhen"
                           scale="7" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
                           name="__$command_id" />
                       </outputColumns>
                       <externalMetadataColumns />
@@ -444,7 +444,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter"
                   componentClassID="Microsoft.ManagedComponentHost"
                   contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
                   description="Directs a stream of net change records into different outputs based on the type of the change (Insert, Delete and Update). This allows specific handling for different types of change records."
@@ -458,92 +458,92 @@
                   </properties>
                   <inputs>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input]"
                       errorOrTruncationOperation="Operation of the changed row is not a valid one"
                       errorRowDisposition="FailComponent"
                       name="Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[__$start_lsn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[__$start_lsn]"
                           cachedDataType="bytes"
                           cachedLength="10"
                           cachedName="__$start_lsn"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[__$operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[__$operation]"
                           cachedDataType="i4"
                           cachedName="__$operation"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[__$update_mask]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[__$update_mask]"
                           cachedDataType="bytes"
                           cachedLength="128"
                           cachedName="__$update_mask"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[StockItemID]"
                           cachedDataType="i4"
                           cachedName="StockItemID"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[QuantityOnHand]"
                           cachedDataType="i4"
                           cachedName="QuantityOnHand"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[BinLocation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[BinLocation]"
                           cachedDataType="wstr"
                           cachedLength="20"
                           cachedName="BinLocation"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[LastStocktakeQuantity]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[LastStocktakeQuantity]"
                           cachedDataType="i4"
                           cachedName="LastStocktakeQuantity"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[LastCostPrice]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[LastCostPrice]"
                           cachedDataType="numeric"
                           cachedName="LastCostPrice"
                           cachedPrecision="18"
                           cachedScale="2"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[ReorderLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[ReorderLevel]"
                           cachedDataType="i4"
                           cachedName="ReorderLevel"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[TargetStockLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[TargetStockLevel]"
                           cachedDataType="i4"
                           cachedName="TargetStockLevel"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[LastEditedBy]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[LastEditedBy]"
                           cachedDataType="i4"
                           cachedName="LastEditedBy"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[LastEditedWhen]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[LastEditedWhen]"
                           cachedDataType="dbTimeStamp2"
                           cachedName="LastEditedWhen"
                           cachedScale="7"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[__$command_id]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input].Columns[__$command_id]"
                           cachedDataType="i4"
                           cachedName="__$command_id"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]" />
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[InsertOutput]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[InsertOutput]"
                       exclusionGroup="1"
                       name="InsertOutput"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -554,10 +554,10 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[DeleteOutput]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[DeleteOutput]"
                       exclusionGroup="1"
                       name="DeleteOutput"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -568,10 +568,10 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[UpdateOutput]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[UpdateOutput]"
                       exclusionGroup="1"
                       name="UpdateOutput"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -582,11 +582,11 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="ErrorOutput"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -596,15 +596,15 @@
                       </properties>
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -613,7 +613,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
                   description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
@@ -621,7 +621,7 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Inputs[Entrada de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Inputs[Entrada de columna derivada]"
                       description="Entrada en la transformación Columna derivada"
                       name="Entrada de columna derivada">
                       <externalMetadataColumns />
@@ -629,18 +629,18 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada]"
                       description="Salida predeterminada de la transformación Columna derivada"
                       exclusionGroup="1"
                       name="Salida de columna derivada"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Inputs[Entrada de columna derivada]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Inputs[Entrada de columna derivada]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada].Columns[DATE]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada].Columns[DATE]"
                           dataType="dbTimeStamp"
                           errorOrTruncationOperation="Cálculo"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada].Columns[DATE]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada].Columns[DATE]"
                           name="DATE"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -661,23 +661,23 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada]"
                       description="Salida de error de la transformación Columna derivada"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Salida de error de columna derivada"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Inputs[Entrada de columna derivada]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Inputs[Entrada de columna derivada]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -686,7 +686,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
                   description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
@@ -694,7 +694,7 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Inputs[Entrada de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Inputs[Entrada de columna derivada]"
                       description="Entrada en la transformación Columna derivada"
                       name="Entrada de columna derivada">
                       <externalMetadataColumns />
@@ -702,18 +702,18 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada]"
                       description="Salida predeterminada de la transformación Columna derivada"
                       exclusionGroup="1"
                       name="Salida de columna derivada"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Inputs[Entrada de columna derivada]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Inputs[Entrada de columna derivada]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada].Columns[Status]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada].Columns[Status]"
                           dataType="i4"
                           errorOrTruncationOperation="Cálculo"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada].Columns[Status]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada].Columns[Status]"
                           name="Status"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -734,23 +734,23 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada]"
                       description="Salida de error de la transformación Columna derivada"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Salida de error de columna derivada"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Inputs[Entrada de columna derivada]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Inputs[Entrada de columna derivada]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -759,7 +759,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET"
                   componentClassID="Microsoft.ManagedComponentHost"
                   contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
                   description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
@@ -794,7 +794,7 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Connections[IDbConnection]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Connections[IDbConnection]"
                       connectionManagerID="Package.ConnectionManagers[LocalHost.WideWorldImporters1]"
                       connectionManagerRefId="Package.ConnectionManagers[LocalHost.WideWorldImporters1]"
                       description="Administrador de conexiones administrado"
@@ -802,68 +802,68 @@
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="Entrada de destino de ADO NET">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[StockItemID]"
                           cachedDataType="i4"
                           cachedName="StockItemID"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[StockItemID]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]" />
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[StockItemID]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[QuantityOnHand]"
                           cachedDataType="i4"
                           cachedName="QuantityOnHand"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[QuantityOnHand]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]" />
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[QuantityOnHand]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[__$operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[__$operation]"
                           cachedDataType="i4"
                           cachedName="__$operation"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Operation]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]" />
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Operation]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[DATE]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[DATE]"
                           cachedDataType="dbTimeStamp"
                           cachedName="DATE"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AuditInsertDate]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada].Columns[DATE]" />
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AuditInsertDate]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada].Columns[DATE]" />
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[__$start_lsn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[__$start_lsn]"
                           cachedDataType="bytes"
                           cachedLength="10"
                           cachedName="__$start_lsn"
-                          externalMetadataColumnId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ModifiedDate]"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]" />
+                          externalMetadataColumnId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID]"
                           dataType="i4"
                           name="ID" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[StockItemID]"
                           dataType="i4"
                           name="StockItemID" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[QuantityOnHand]"
                           dataType="i4"
                           name="QuantityOnHand" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Operation]"
                           dataType="wstr"
                           length="20"
                           name="Operation" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AuditInsertDate]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AuditInsertDate]"
                           dataType="dbTimeStamp"
                           name="AuditInsertDate" />
                         <externalMetadataColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ModifiedDate]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ModifiedDate]"
                           dataType="bytes"
                           length="10"
                           name="ModifiedDate" />
@@ -872,22 +872,22 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Salida de error de destino de ADO NET"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -896,7 +896,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
                   description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
@@ -904,7 +904,7 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Inputs[Entrada de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Inputs[Entrada de columna derivada]"
                       description="Entrada en la transformación Columna derivada"
                       name="Entrada de columna derivada">
                       <externalMetadataColumns />
@@ -912,18 +912,18 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada]"
                       description="Salida predeterminada de la transformación Columna derivada"
                       exclusionGroup="1"
                       name="Salida de columna derivada"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Inputs[Entrada de columna derivada]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Inputs[Entrada de columna derivada]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada].Columns[Status]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada].Columns[Status]"
                           dataType="i4"
                           errorOrTruncationOperation="Cálculo"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada].Columns[Status]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada].Columns[Status]"
                           name="Status"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -944,23 +944,23 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada]"
                       description="Salida de error de la transformación Columna derivada"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Salida de error de columna derivada"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Inputs[Entrada de columna derivada]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Inputs[Entrada de columna derivada]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -969,7 +969,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo"
                   componentClassID="Microsoft.UnionAll"
                   contactInfo="Unión de todo;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
                   description="Combina las filas de varios flujos de datos sin ordenarlos. Por ejemplo, devuelve filas a un flujo de datos después de corregir los errores. Si el orden es importante, se recomienda usar la transformación Mezclar."
@@ -977,594 +977,594 @@
                   version="1">
                   <inputs>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1]"
                       name="Entrada de Unión de todo 1">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[__$start_lsn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[__$start_lsn]"
                           cachedDataType="bytes"
                           cachedLength="10"
                           cachedName="__$start_lsn"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[__$operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[__$operation]"
                           cachedDataType="i4"
                           cachedName="__$operation"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[__$update_mask]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[__$update_mask]"
                           cachedDataType="bytes"
                           cachedLength="128"
                           cachedName="__$update_mask"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[StockItemID]"
                           cachedDataType="i4"
                           cachedName="StockItemID"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[QuantityOnHand]"
                           cachedDataType="i4"
                           cachedName="QuantityOnHand"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[BinLocation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[BinLocation]"
                           cachedDataType="wstr"
                           cachedLength="20"
                           cachedName="BinLocation"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastStocktakeQuantity]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastStocktakeQuantity]"
                           cachedDataType="i4"
                           cachedName="LastStocktakeQuantity"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastCostPrice]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastCostPrice]"
                           cachedDataType="numeric"
                           cachedName="LastCostPrice"
                           cachedPrecision="18"
                           cachedScale="2"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[ReorderLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[ReorderLevel]"
                           cachedDataType="i4"
                           cachedName="ReorderLevel"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[TargetStockLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[TargetStockLevel]"
                           cachedDataType="i4"
                           cachedName="TargetStockLevel"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastEditedBy]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastEditedBy]"
                           cachedDataType="i4"
                           cachedName="LastEditedBy"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastEditedWhen]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[LastEditedWhen]"
                           cachedDataType="dbTimeStamp2"
                           cachedName="LastEditedWhen"
                           cachedScale="7"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[__$command_id]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[__$command_id]"
                           cachedDataType="i4"
                           cachedName="__$command_id"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[Status]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[Status]"
                           cachedDataType="i4"
                           cachedName="Status"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada].Columns[Status]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada].Columns[Status]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]}</property>
                           </properties>
                         </inputColumn>
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2]"
                       hasSideEffects="true"
                       name="Entrada de Unión de todo 2">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[__$start_lsn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[__$start_lsn]"
                           cachedDataType="bytes"
                           cachedLength="10"
                           cachedName="__$start_lsn"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[__$operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[__$operation]"
                           cachedDataType="i4"
                           cachedName="__$operation"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[__$update_mask]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[__$update_mask]"
                           cachedDataType="bytes"
                           cachedLength="128"
                           cachedName="__$update_mask"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[StockItemID]"
                           cachedDataType="i4"
                           cachedName="StockItemID"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[QuantityOnHand]"
                           cachedDataType="i4"
                           cachedName="QuantityOnHand"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[BinLocation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[BinLocation]"
                           cachedDataType="wstr"
                           cachedLength="20"
                           cachedName="BinLocation"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastStocktakeQuantity]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastStocktakeQuantity]"
                           cachedDataType="i4"
                           cachedName="LastStocktakeQuantity"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastCostPrice]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastCostPrice]"
                           cachedDataType="numeric"
                           cachedName="LastCostPrice"
                           cachedPrecision="18"
                           cachedScale="2"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[ReorderLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[ReorderLevel]"
                           cachedDataType="i4"
                           cachedName="ReorderLevel"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[TargetStockLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[TargetStockLevel]"
                           cachedDataType="i4"
                           cachedName="TargetStockLevel"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastEditedBy]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastEditedBy]"
                           cachedDataType="i4"
                           cachedName="LastEditedBy"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastEditedWhen]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[LastEditedWhen]"
                           cachedDataType="dbTimeStamp2"
                           cachedName="LastEditedWhen"
                           cachedScale="7"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[__$command_id]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[__$command_id]"
                           cachedDataType="i4"
                           cachedName="__$command_id"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[Status]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[Status]"
                           cachedDataType="i4"
                           cachedName="Status"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada].Columns[Status]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada].Columns[Status]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]}</property>
                           </properties>
                         </inputColumn>
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3]"
                       hasSideEffects="true"
                       name="Entrada de Unión de todo 3">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[__$start_lsn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[__$start_lsn]"
                           cachedDataType="bytes"
                           cachedLength="10"
                           cachedName="__$start_lsn"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$start_lsn]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[__$operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[__$operation]"
                           cachedDataType="i4"
                           cachedName="__$operation"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$operation]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[__$update_mask]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[__$update_mask]"
                           cachedDataType="bytes"
                           cachedLength="128"
                           cachedName="__$update_mask"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$update_mask]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[StockItemID]"
                           cachedDataType="i4"
                           cachedName="StockItemID"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[StockItemID]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[QuantityOnHand]"
                           cachedDataType="i4"
                           cachedName="QuantityOnHand"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[QuantityOnHand]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[BinLocation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[BinLocation]"
                           cachedDataType="wstr"
                           cachedLength="20"
                           cachedName="BinLocation"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[BinLocation]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[LastStocktakeQuantity]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[LastStocktakeQuantity]"
                           cachedDataType="i4"
                           cachedName="LastStocktakeQuantity"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastStocktakeQuantity]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[LastCostPrice]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[LastCostPrice]"
                           cachedDataType="numeric"
                           cachedName="LastCostPrice"
                           cachedPrecision="18"
                           cachedScale="2"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastCostPrice]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[ReorderLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[ReorderLevel]"
                           cachedDataType="i4"
                           cachedName="ReorderLevel"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[ReorderLevel]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[TargetStockLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[TargetStockLevel]"
                           cachedDataType="i4"
                           cachedName="TargetStockLevel"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[TargetStockLevel]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[LastEditedBy]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[LastEditedBy]"
                           cachedDataType="i4"
                           cachedName="LastEditedBy"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedBy]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[LastEditedWhen]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[LastEditedWhen]"
                           cachedDataType="dbTimeStamp2"
                           cachedName="LastEditedWhen"
                           cachedScale="7"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[LastEditedWhen]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[__$command_id]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[__$command_id]"
                           cachedDataType="i4"
                           cachedName="__$command_id"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output].Columns[__$command_id]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]}</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[Status]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[Status]"
                           cachedDataType="i4"
                           cachedName="Status"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada].Columns[Status]">
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada].Columns[Status]">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Id. de linaje de columna de salida"
-                              name="OutputColumnLineageID">#{Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]}</property>
+                              name="OutputColumnLineageID">#{Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]}</property>
                           </properties>
                         </inputColumn>
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 4]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 4]"
                       dangling="true"
                       hasSideEffects="true"
                       name="Entrada de Unión de todo 4">
@@ -1573,84 +1573,84 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1]"
                       name="Salida de Unión de todo 1">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]"
                           dataType="bytes"
                           length="10"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$start_lsn]"
                           name="__$start_lsn" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$operation]"
                           name="__$operation" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]"
                           dataType="bytes"
                           length="128"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$update_mask]"
                           name="__$update_mask" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[StockItemID]"
                           name="StockItemID" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[QuantityOnHand]"
                           name="QuantityOnHand" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]"
                           dataType="wstr"
                           length="20"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[BinLocation]"
                           name="BinLocation" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastStocktakeQuantity]"
                           name="LastStocktakeQuantity" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]"
                           dataType="numeric"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastCostPrice]"
                           name="LastCostPrice"
                           precision="18"
                           scale="2" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ReorderLevel]"
                           name="ReorderLevel" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[TargetStockLevel]"
                           name="TargetStockLevel" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedBy]"
                           name="LastEditedBy" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]"
                           dataType="dbTimeStamp2"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[LastEditedWhen]"
                           name="LastEditedWhen"
                           scale="7" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[__$command_id]"
                           name="__$command_id" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[Status]"
                           name="Status" />
                       </outputColumns>
                       <externalMetadataColumns />
@@ -1658,7 +1658,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
                   description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
@@ -1666,7 +1666,7 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Inputs[Entrada de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Inputs[Entrada de columna derivada]"
                       description="Entrada en la transformación Columna derivada"
                       name="Entrada de columna derivada">
                       <externalMetadataColumns />
@@ -1674,18 +1674,18 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada]"
                       description="Salida predeterminada de la transformación Columna derivada"
                       exclusionGroup="1"
                       name="Salida de columna derivada"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Inputs[Entrada de columna derivada]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Inputs[Entrada de columna derivada]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada].Columns[Status]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada].Columns[Status]"
                           dataType="i4"
                           errorOrTruncationOperation="Cálculo"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada].Columns[Status]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada].Columns[Status]"
                           name="Status"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -1706,23 +1706,23 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada]"
+                      refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada]"
                       description="Salida de error de la transformación Columna derivada"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Salida de error de columna derivada"
-                      synchronousInputId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Inputs[Entrada de columna derivada]">
+                      synchronousInputId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Inputs[Entrada de columna derivada]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                          refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                          lineageId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -1733,50 +1733,50 @@
               </components>
               <paths>
                 <path
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[DeleteOutput]"
-                  endId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Inputs[Entrada de columna derivada]"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[DeleteOutput]"
+                  endId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Inputs[Entrada de columna derivada]"
                   name="DeleteOutput"
-                  startId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[DeleteOutput]" />
+                  startId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[DeleteOutput]" />
                 <path
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[InsertOutput]"
-                  endId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Inputs[Entrada de columna derivada]"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[InsertOutput]"
+                  endId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Inputs[Entrada de columna derivada]"
                   name="InsertOutput"
-                  startId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[InsertOutput]" />
+                  startId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[InsertOutput]" />
                 <path
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Output]"
-                  endId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Inputs[Input]"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Output]"
+                  endId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Inputs[Input]"
                   name="Output"
-                  startId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source.Outputs[Output]" />
+                  startId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source.Outputs[Output]" />
                 <path
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de columna derivada]"
-                  endId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1]"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de columna derivada]"
+                  endId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 1]"
                   name="Salida de columna derivada"
-                  startId="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada]" />
+                  startId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert.Outputs[Salida de columna derivada]" />
                 <path
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de columna derivada1]"
-                  endId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2]"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de columna derivada1]"
+                  endId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 2]"
                   name="Salida de columna derivada"
-                  startId="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada]" />
+                  startId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete.Outputs[Salida de columna derivada]" />
                 <path
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de columna derivada2]"
-                  endId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3]"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de columna derivada2]"
+                  endId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3]"
                   name="Salida de columna derivada"
-                  startId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada]" />
+                  startId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Outputs[Salida de columna derivada]" />
                 <path
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de columna derivada3]"
-                  endId="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de columna derivada3]"
+                  endId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
                   name="Salida de columna derivada"
-                  startId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada]" />
+                  startId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada]" />
                 <path
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de Unión de todo 1]"
-                  endId="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada.Inputs[Entrada de columna derivada]"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de Unión de todo 1]"
+                  endId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada.Inputs[Entrada de columna derivada]"
                   name="Salida de Unión de todo 1"
-                  startId="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1]" />
+                  startId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo.Outputs[Salida de Unión de todo 1]" />
                 <path
-                  refId="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[UpdateOutput]"
-                  endId="Package\Contenedor de secuencias\Tarea Flujo de datos\Update.Inputs[Entrada de columna derivada]"
+                  refId="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[UpdateOutput]"
+                  endId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update.Inputs[Entrada de columna derivada]"
                   name="UpdateOutput"
-                  startId="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter.Outputs[UpdateOutput]" />
+                  startId="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter.Outputs[UpdateOutput]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -1784,21 +1784,21 @@
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción 1]"
+          DTS:refId="Package\CDC - StockItemHoldings.PrecedenceConstraints[Restricción 1]"
           DTS:CreationName=""
           DTS:DTSID="{4B7B9D31-766E-4036-B1F8-EF17677CC8AA}"
-          DTS:From="Package\Contenedor de secuencias\Tarea Flujo de datos"
+          DTS:From="Package\CDC - StockItemHoldings\Tarea Flujo de datos"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 1"
-          DTS:To="Package\Contenedor de secuencias\CDC Control Task  - Mark Range" />
+          DTS:To="Package\CDC - StockItemHoldings\CDC Control Task  - Mark Range" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción 2]"
+          DTS:refId="Package\CDC - StockItemHoldings.PrecedenceConstraints[Restricción 2]"
           DTS:CreationName=""
           DTS:DTSID="{D832942A-3D13-4382-8157-F46B9C0879CD}"
-          DTS:From="Package\Contenedor de secuencias\CDC Control Task  Get Range"
+          DTS:From="Package\CDC - StockItemHoldings\CDC Control Task  Get Range"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Restricción 2"
-          DTS:To="Package\Contenedor de secuencias\Tarea Flujo de datos" />
+          DTS:To="Package\CDC - StockItemHoldings\Tarea Flujo de datos" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -1816,18 +1816,18 @@
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="240,42"
-          Id="Package\Contenedor de secuencias\CDC Control Task  - Mark Range"
+          Id="Package\CDC - StockItemHoldings\CDC Control Task  - Mark Range"
           TopLeft="94.0000000000001,194" />
         <NodeLayout
           Size="227,42"
-          Id="Package\Contenedor de secuencias\CDC Control Task  Get Range"
+          Id="Package\CDC - StockItemHoldings\CDC Control Task  Get Range"
           TopLeft="101,20" />
         <NodeLayout
           Size="180,42"
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos"
           TopLeft="127,101" />
         <EdgeLayout
-          Id="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción 1]"
+          Id="Package\CDC - StockItemHoldings.PrecedenceConstraints[Restricción 1]"
           TopLeft="215.5,143">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1849,7 +1849,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Contenedor de secuencias.PrecedenceConstraints[Restricción 2]"
+          Id="Package\CDC - StockItemHoldings.PrecedenceConstraints[Restricción 2]"
           TopLeft="215.75,62">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1875,38 +1875,38 @@
           IsExpanded="True"
           PanelSize="463,291"
           Size="463,334"
-          Id="Package\Contenedor de secuencias"
-          TopLeft="561.428571428571,41" />
+          Id="Package\CDC - StockItemHoldings"
+          TopLeft="341.428571428571,42" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Contenedor de secuencias\Tarea Flujo de datos">
+    design-time-name="Package\CDC - StockItemHoldings\Tarea Flujo de datos">
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="107,42"
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos\Insert"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Insert"
           TopLeft="80,233.75" />
         <NodeLayout
           Size="168,42"
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos\Columna derivada"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Columna derivada"
           TopLeft="290,425.75" />
         <NodeLayout
           Size="114,42"
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos\Update"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Update"
           TopLeft="533,236.75" />
         <NodeLayout
           Size="147,42"
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos\Unión de todo"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Unión de todo"
           TopLeft="297.5,338.923076923077" />
         <NodeLayout
           Size="111,42"
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos\Delete"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Delete"
           TopLeft="309,238.75" />
         <EdgeLayout
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de Unión de todo 1]"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de Unión de todo 1]"
           TopLeft="372.5,380.923076923077">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1928,7 +1928,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de columna derivada2]"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de columna derivada2]"
           TopLeft="590,278.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1962,7 +1962,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de columna derivada1]"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de columna derivada1]"
           TopLeft="367.75,280.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1984,7 +1984,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de columna derivada]"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de columna derivada]"
           TopLeft="133.5,275.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2019,14 +2019,14 @@
         </EdgeLayout>
         <NodeLayout
           Size="140,42"
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Splitter"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Splitter"
           TopLeft="284,144" />
         <NodeLayout
           Size="141,42"
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source"
           TopLeft="286,31" />
         <EdgeLayout
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Output]"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Output]"
           TopLeft="355.25,73">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2048,7 +2048,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[InsertOutput]"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[InsertOutput]"
           TopLeft="321,186">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2084,7 +2084,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[DeleteOutput]"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[DeleteOutput]"
           TopLeft="354,186">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2120,7 +2120,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[UpdateOutput]"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[UpdateOutput]"
           TopLeft="387,186">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2157,10 +2157,10 @@
         </EdgeLayout>
         <NodeLayout
           Size="183,42"
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET"
           TopLeft="285,517" />
         <EdgeLayout
-          Id="Package\Contenedor de secuencias\Tarea Flujo de datos.Paths[Salida de columna derivada3]"
+          Id="Package\CDC - StockItemHoldings\Tarea Flujo de datos.Paths[Salida de columna derivada3]"
           TopLeft="375.25,467.75">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2185,7 +2185,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias\Tarea Flujo de datos\CDC Source">
+    design-time-name="Package\CDC - StockItemHoldings\Tarea Flujo de datos\CDC Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2193,7 +2193,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Contenedor de secuencias\Tarea Flujo de datos\Destino de ADO NET">
+    design-time-name="Package\CDC - StockItemHoldings\Tarea Flujo de datos\Destino de ADO NET">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
