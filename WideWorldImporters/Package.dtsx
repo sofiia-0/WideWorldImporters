@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="7/4/2025 7:17:12 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{ED50EA12-EE8E-46E6-9949-0029B6A6DF3B}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{520ADB98-8A41-419B-8CF2-253EAFDFFE31}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,6 +29,16 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.WideWorldImporters1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{BC25AF2C-83E8-45D8-9261-91926A8978B1}"
+      DTS:ObjectName="LocalHost.WideWorldImporters1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=WideWorldImporters;Integrated Security=True;TrustServerCertificate=True;Application Name=SSIS-Package-{BC25AF2C-83E8-45D8-9261-91926A8978B1}LocalHost.WideWorldImporters1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.WideWorldImportersDW]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{47BEE6B6-94DD-454A-8005-77D7077496B4}"
@@ -41,8 +51,69 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{527D0651-6F12-4DC7-B1AD-D35DB32E08DC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CDC_State">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Identificar Cargamento Inicial"
+      DTS:CreationName="Attunity.CdcControlTask"
+      DTS:Description="CDC Control Task"
+      DTS:DTSID="{279AAD0C-13C8-4EC5-9D1E-C50F7E8FEEA8}"
+      DTS:ExecutableType="Attunity.CdcControlTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Identificar Cargamento Inicial"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <CDCControlTask
+          Connection="LocalHost.WideWorldImporters1"
+          TaskOperation="MarkInitialLoadStart"
+          OperationParameter=""
+          StateConnection="LocalHost.WideWorldImporters1"
+          StateVariable="User::CDC_State"
+          AutomaticStatePersistence="True"
+          StateName="CDC_State"
+          StateTable="[dbo].[cdc_states]"
+          CommandTimeout="30"
+          ChangeDetectionRetryInterval="10"
+          ChangeDetectionTimeout="60" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Identificar fin del cargamento inicial"
+      DTS:CreationName="Attunity.CdcControlTask"
+      DTS:Description="CDC Control Task"
+      DTS:DTSID="{C92F10C6-81E0-4438-91C8-814C7071F2BE}"
+      DTS:ExecutableType="Attunity.CdcControlTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Identificar fin del cargamento inicial"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <CDCControlTask
+          Connection="LocalHost.WideWorldImporters1"
+          TaskOperation="MarkInitialLoadEnd"
+          OperationParameter=""
+          StateConnection="LocalHost.WideWorldImporters1"
+          StateVariable="User::CDC_State"
+          AutomaticStatePersistence="True"
+          StateName="CDC_State"
+          StateTable="[dbo].[cdc_states]"
+          CommandTimeout="30"
+          ChangeDetectionRetryInterval="10"
+          ChangeDetectionTimeout="60" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\InsertData"
       DTS:CreationName="Microsoft.Pipeline"
@@ -167,13 +238,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Expresión de columna derivada"
-                          name="Expression">1</property>
+                          name="Expression">12</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expresión descriptiva de columna derivada"
                           expressionType="Notify"
-                          name="FriendlyExpression">1</property>
+                          name="FriendlyExpression">12</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -296,7 +367,7 @@
                   description="Comando SQL para ejecutar."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [Fact].[Stock Holding] SET [EndDate] = ? WHERE [Stock Item Key] = ? AND [EndDate] IS NULL</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [Fact].[Stock Holding] SET [EndDate] = ? WHERE [Stock Item Key] = ? AND [EndDate] IS NULL</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -408,7 +479,7 @@
                   description="Comando SQL para ejecutar."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [Fact].[Stock Holding] SET [Bin Location] = ?,[Last Cost Price] = ?,[Last Stocktake Quantity] = ?,[Lineage Key] = ?,[Quantity On Hand] = ?,[Reorder Level] = ?,[Target Stock Level] = ? WHERE [Stock Item Key] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [Fact].[Stock Holding] SET [Bin Location] = ?,[Last Cost Price] = ?,[Last Stocktake Quantity] = ?,[Lineage Key] = ?,[Quantity On Hand] = ?,[Reorder Level] = ?,[Target Stock Level] = ? WHERE [Stock Item Key] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -628,7 +699,7 @@
                   description="Comando SQL para ejecutar."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [Fact].[Stock Holding] SET [Bin Location] = ?,[Last Stocktake Quantity] = ?,[Lineage Key] = ?,[Quantity On Hand] = ?,[Reorder Level] = ?,[Target Stock Level] = ? WHERE [Stock Item Key] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [Fact].[Stock Holding] SET [Bin Location] = ?,[Last Stocktake Quantity] = ?,[Lineage Key] = ?,[Quantity On Hand] = ?,[Reorder Level] = ?,[Target Stock Level] = ? WHERE [Stock Item Key] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -821,7 +892,7 @@
                   dataType="System.String"
                   description="Especifica la instrucción SELECT utilizada para crear un conjunto de filas de esquema."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Bin Location], [Last Cost Price], [Last Stocktake Quantity], [Lineage Key], [Quantity On Hand], [Reorder Level], [Stock Item Key], [Target Stock Level],[StartDate],[EndDate] FROM [Fact].[Stock Holding]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [Bin Location], [Last Cost Price], [Last Stocktake Quantity], [Lineage Key], [Quantity On Hand], [Reorder Level], [Stock Item Key], [Target Stock Level],[StartDate],[EndDate] FROM [Fact].[Stock Holding]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la cláusula WHERE de la instrucción SELECT que selecciona la fila actual de entre filas con claves empresariales idénticas."
@@ -1101,7 +1172,7 @@
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -1308,7 +1379,7 @@
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -1965,6 +2036,24 @@
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{EF1744E9-BA6A-4768-BCEB-ACEC821CDBFB}"
+      DTS:From="Package\Identificar Cargamento Inicial"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\InsertData" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{92AC85C5-7418-4929-B212-C9CA7E5A4D54}"
+      DTS:From="Package\InsertData"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Identificar fin del cargamento inicial" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
 <!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
@@ -1976,11 +2065,63 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="130,42"
           Id="Package\InsertData"
-          TopLeft="84,38" />
+          TopLeft="217,103" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\Identificar Cargamento Inicial"
+          TopLeft="170,20" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\Identificar fin del cargamento inicial"
+          TopLeft="151,189" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="281.25,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="279.25,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1990,143 +2131,45 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="185,42"
+          Id="Package\InsertData\Comando de OLE DB"
+          TopLeft="5.5,413.5" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\InsertData\Comando de OLE DB 1"
+          TopLeft="313,311.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\InsertData\Columna derivada 1"
+          TopLeft="163.5,107.5" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\InsertData\Unión de todo"
+          TopLeft="178.5,515.5" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\InsertData\Dimensión de variación lenta"
+          TopLeft="142,209.5" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\InsertData\Comando de OLE DB 2"
+          TopLeft="568,311.5" />
+        <NodeLayout
           Size="170,42"
           Id="Package\InsertData\Origen de OLE DB"
           TopLeft="167,5.5" />
         <NodeLayout
           Size="177,42"
-          Id="Package\InsertData\Columna derivada 1"
-          TopLeft="163.5,107.5" />
-        <EdgeLayout
-          Id="Package\InsertData.Paths[Salida de origen de OLE DB]"
-          TopLeft="252,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="220,42"
-          Id="Package\InsertData\Dimensión de variación lenta"
-          TopLeft="142,209.5" />
-        <EdgeLayout
-          Id="Package\InsertData.Paths[Salida de columna derivada]"
-          TopLeft="252,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Id="Package\InsertData\Columna derivada 2"
+          TopLeft="163.5,617.5" />
         <NodeLayout
           Size="168,42"
           Id="Package\InsertData\Columna derivada"
           TopLeft="23,311.5" />
-        <EdgeLayout
-          Id="Package\InsertData.Paths[Salida de inserciones de atributos históricos]"
-          TopLeft="188.4,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-81.4,60.0000000000001"
-              Start="0,0"
-              End="-81.4,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.8005115089514" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.8005115089514"
-                    Point2="0,17.8005115089514"
-                    Point3="-4,17.8005115089514" />
-                  <mssgle:LineSegment
-                    End="-77.4,17.8005115089514" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-77.4,17.8005115089514"
-                    Point2="-81.4,17.8005115089514"
-                    Point3="-81.4,21.8005115089514" />
-                  <mssgle:LineSegment
-                    End="-81.4,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-137.6882421875,22.8005115089514,193.976484375,10.3349609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="185,42"
-          Id="Package\InsertData\Comando de OLE DB"
-          TopLeft="5.5,413.5" />
-        <EdgeLayout
-          Id="Package\InsertData.Paths[Salida de columna derivada1]"
-          TopLeft="107,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-9,60"
-              Start="0,0"
-              End="-9,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-5,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5,30"
-                    Point2="-9,30"
-                    Point3="-9,34" />
-                  <mssgle:LineSegment
-                    End="-9,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="147,42"
-          Id="Package\InsertData\Unión de todo"
-          TopLeft="178.5,515.5" />
+          Size="155,42"
+          Id="Package\InsertData\Insertar destino"
+          TopLeft="174.5,719.5" />
         <EdgeLayout
           Id="Package\InsertData.Paths[Nueva salida]"
           TopLeft="230.8,251.5">
@@ -2164,6 +2207,86 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de Unión de todo 1]"
+          TopLeft="252,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de origen de OLE DB]"
+          TopLeft="252,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de inserciones de atributos históricos]"
+          TopLeft="188.4,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-81.4,60.0000000000001"
+              Start="0,0"
+              End="-81.4,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8005115089514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8005115089514"
+                    Point2="0,17.8005115089514"
+                    Point3="-4,17.8005115089514" />
+                  <mssgle:LineSegment
+                    End="-77.4,17.8005115089514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-77.4,17.8005115089514"
+                    Point2="-81.4,17.8005115089514"
+                    Point3="-81.4,21.8005115089514" />
+                  <mssgle:LineSegment
+                    End="-81.4,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-137.6882421875,22.8005115089514,193.976484375,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\InsertData.Paths[Salida de comando de OLE DB]"
           TopLeft="98,455.5">
           <EdgeLayout.Curve>
@@ -2197,36 +2320,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\InsertData\Columna derivada 2"
-          TopLeft="163.5,617.5" />
-        <EdgeLayout
-          Id="Package\InsertData.Paths[Salida de Unión de todo 1]"
-          TopLeft="252,557.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\InsertData\Insertar destino"
-          TopLeft="174.5,719.5" />
         <EdgeLayout
           Id="Package\InsertData.Paths[Salida de columna derivada2]"
           TopLeft="252,659.5">
@@ -2249,10 +2342,62 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194,42"
-          Id="Package\InsertData\Comando de OLE DB 1"
-          TopLeft="313,311.5" />
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de columna derivada1]"
+          TopLeft="107,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,60"
+              Start="0,0"
+              End="-9,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,30"
+                    Point2="-9,30"
+                    Point3="-9,34" />
+                  <mssgle:LineSegment
+                    End="-9,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\InsertData.Paths[Salida de columna derivada]"
+          TopLeft="252,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\InsertData.Paths[Salida de actualizaciones de miembros deducidos]"
           TopLeft="273.2,251.5">
@@ -2289,10 +2434,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194,42"
-          Id="Package\InsertData\Comando de OLE DB 2"
-          TopLeft="568,311.5" />
         <EdgeLayout
           Id="Package\InsertData.Paths[Salida de actualizaciones de atributos variables]"
           TopLeft="315.6,251.5">
@@ -2332,19 +2473,6 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\InsertData\Origen de OLE DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\InsertData\Dimensión de variación lenta">
     <Properties>
@@ -2424,6 +2552,19 @@
   &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
   &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\InsertData\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
